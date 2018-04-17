@@ -1,0 +1,6 @@
+[
+    {
+        "targetName": "DEV",
+        "connectionString": "user/password@XE"
+    }
+]
