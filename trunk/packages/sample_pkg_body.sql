@@ -1,4 +1,4 @@
-icreate or replace package body sample_pkg as
+create or replace package body sample_pkg as
     --
     -- Error Handling function
     --
