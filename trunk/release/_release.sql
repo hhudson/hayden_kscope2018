@@ -1,4 +1,5 @@
-@../packages/sample_pkg_spec.sql;
-@../build/create_tables.sql;
-@../packages/sample_pkg_body.sql;
-@../packages/sample_data_pkg.sql;
+@trunk/packages/sample_pkg.pks;
+@trunk/build/create_tables.sql;
+@trunk/packages/sample_pkg.pkb;
+@trunk/packages/sample_data_pkg.pks;
+@trunk/packages/sample_data_pkg.pkb;
