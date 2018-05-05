@@ -1,3 +1,5 @@
+
+
 prompt --application/set_environment
 set define off verify off feedback off
 whenever sqlerror exit sql.sqlcode rollback
@@ -27,23 +29,23 @@ prompt APPLICATION 130 - Sample Database Application
 -- Application Export:
 --   Application:     130
 --   Name:            Sample Database Application
---   Date and Time:   01:41 Thursday April 26, 2018
---   Exported By:     HAYDEN
+--   Date and Time:   19:30 Saturday May 5, 2018
+--   Exported By:     HAYDEN_KSCOPE2018
 --   Flashback:       0
 --   Export Type:     Application Export
 --   Version:         5.1.4.00.08
---   Instance ID:     220130765979805
+--   Instance ID:     220157641556111
 --
 
 -- Application Statistics:
---   Pages:                     63
+--   Pages:                     64
 --     Items:                  161
---     Computations:             9
+--     Computations:            10
 --     Validations:             29
 --     Processes:               56
---     Regions:                129
---     Buttons:                 89
---     Dynamic Actions:         31
+--     Regions:                141
+--     Buttons:                 98
+--     Dynamic Actions:         40
 --   Shared Components:
 --     Logic:
 --       Items:                  7
@@ -141,7 +143,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Sample Database Application'
 ,p_last_updated_by=>'HAYDEN'
-,p_last_upd_yyyymmddhh24miss=>'20180426013942'
+,p_last_upd_yyyymmddhh24miss=>'20180505191455'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_ui_type_name => null
 );
@@ -170,7 +172,7 @@ wwv_flow_api.create_list_item(
 ,p_list_item_link_target=>'f?p=&APP_ID.:2:&SESSION.::&DEBUG.:RIR:::'
 ,p_list_item_icon=>'fa-users'
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
-,p_list_item_current_for_pages=>'2,7,21,22,23,24,51,52,53,54'
+,p_list_item_current_for_pages=>'2,7,21,23,24,51,52,53,54'
 );
 wwv_flow_api.create_list_item(
  p_id=>wwv_flow_api.id(699722597767952193)
@@ -279,6 +281,15 @@ wwv_flow_api.create_list_item(
 ,p_parent_list_item_id=>wwv_flow_api.id(699722785520952193)
 ,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
 ,p_list_item_current_for_pages=>'21'
+);
+wwv_flow_api.create_list_item(
+ p_id=>wwv_flow_api.id(4963715189476811)
+,p_list_item_display_sequence=>240
+,p_list_item_link_text=>'Area chart'
+,p_list_item_link_target=>'f?p=&APP_ID.:22:&SESSION.::&DEBUG.:RP,22:::'
+,p_parent_list_item_id=>wwv_flow_api.id(699722785520952193)
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'22'
 );
 wwv_flow_api.create_list_item(
  p_id=>wwv_flow_api.id(699722914335952193)
@@ -11960,11 +11971,6 @@ begin
 null;
 end;
 /
-prompt --application/shared_components/globalization/translations
-begin
-null;
-end;
-/
 prompt --application/shared_components/globalization/messages
 begin
 wwv_flow_api.create_message(
@@ -22196,6 +22202,1417 @@ wwv_flow_api.create_report_columns(
 ,p_disable_sort_column=>'N'
 ,p_derived_column=>'N'
 ,p_include_in_export=>'Y'
+);
+end;
+/
+prompt --application/pages/page_00022
+begin
+wwv_flow_api.create_page(
+ p_id=>22
+,p_user_interface_id=>wwv_flow_api.id(1561932993795730975)
+,p_name=>'Area'
+,p_page_mode=>'NORMAL'
+,p_step_title=>'Area'
+,p_reload_on_submit=>'A'
+,p_warn_on_unsaved_changes=>'N'
+,p_step_sub_title=>'Area'
+,p_step_sub_title_type=>'TEXT_WITH_SUBSTITUTIONS'
+,p_first_item=>'NO_FIRST_ITEM'
+,p_autocomplete_on_off=>'ON'
+,p_javascript_code=>'var gAppImages = "#APP_IMAGES#";'
+,p_step_template=>wwv_flow_api.id(1301801795903803113)
+,p_page_template_options=>'#DEFAULT#'
+,p_dialog_chained=>'Y'
+,p_overwrite_navigation_list=>'N'
+,p_page_is_public_y_n=>'N'
+,p_protection_level=>'C'
+,p_cache_mode=>'NOCACHE'
+,p_help_text=>'No help is available for this page.'
+,p_last_updated_by=>'HAYDEN'
+,p_last_upd_yyyymmddhh24miss=>'20180505190818'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(235636486150916299)
+,p_plug_name=>'Area Chart (Legend JavaScript Code Customization)'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>wwv_flow_api.id(1301837628275803235)
+,p_plug_display_sequence=>90
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_source_type=>'NATIVE_JET_CHART'
+,p_plug_query_row_template=>1
+,p_plug_query_num_rows=>15
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
+wwv_flow_api.create_jet_chart(
+ p_id=>wwv_flow_api.id(4964418046476816)
+,p_region_id=>wwv_flow_api.id(235636486150916299)
+,p_chart_type=>'area'
+,p_width=>'500'
+,p_height=>'400'
+,p_animation_on_display=>'auto'
+,p_animation_on_data_change=>'auto'
+,p_orientation=>'vertical'
+,p_data_cursor=>'on'
+,p_data_cursor_behavior=>'smooth'
+,p_hide_and_show_behavior=>'withRescale'
+,p_hover_behavior=>'none'
+,p_stack=>'on'
+,p_zoom_and_scroll=>'off'
+,p_tooltip_rendered=>'Y'
+,p_show_series_name=>true
+,p_show_group_name=>true
+,p_show_value=>true
+,p_show_label=>true
+,p_legend_rendered=>'on'
+,p_legend_position=>'top'
+,p_overview_rendered=>'off'
+,p_javascript_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'function( options ) {',
+'    ',
+'    // Setup a callback function which gets called when data is retrieved, to manipulate the series data',
+'    options.dataFilter = function( data ) {',
+'',
+'        // Define a new legend, rather than using the default legend behavior applied to the chart',
+'        data.legend = {',
+'            sections:[{ items:[] }]',
+'        }',
+'        ',
+'        // Loop through the chart series, to define the new legend',
+'        for ( var i = 0; i < data.series.length; i++ ) {',
+'        ',
+'            // Manually add each series to the legend',
+'            // Note: We assume that images exist in Shared Components ''Static Application Files'', with a size of 16x16 pixel for every series entry.',
+'            //       The variable ''gAppImages'' is defined in the page attribute ''Function and Global Variable Declaration''',
+'            data.legend.sections[ 0 ].items.push( {',
+'                text: data.series[ i ].name,',
+'                color: data.series[ i ].color,',
+'                symbolType: "image",',
+'                source: gAppImages + "legend/" + data.series[ i ].name + ".png"',
+'            });',
+'            ',
+'            // Do not automatically include the series in the legend',
+'            data.series[ i ].displayInLegend = ''off'';',
+'        }  ',
+'        return data;',
+'    }',
+'    return options;',
+'}'))
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4966199186476818)
+,p_chart_id=>wwv_flow_api.id(4964418046476816)
+,p_seq=>10
+,p_name=>'Store'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer, a.product_description',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and b.customer = ''Store A'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_color=>'#61F277'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4966755303476819)
+,p_chart_id=>wwv_flow_api.id(4964418046476816)
+,p_seq=>20
+,p_name=>'Acme'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer,a.product_name || '' '' || a.product_description || ''<br/>X: '' ||',
+'                    a.list_price || ''<br/>Y: '' || a.product_id "shortDesc", a.product_description',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and b.customer = ''Acme Store'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_items_short_desc_column_name=>'shortDesc'
+,p_color=>'#F5D451'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4967335764476819)
+,p_chart_id=>wwv_flow_api.id(4964418046476816)
+,p_static_id=>'c_series'
+,p_seq=>30
+,p_name=>'Shop'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer, a.product_description',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and b.customer = ''Shop C'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_color=>'#ED1D1D'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4967907952476819)
+,p_chart_id=>wwv_flow_api.id(4964418046476816)
+,p_seq=>40
+,p_name=>'Deli'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer, a.product_description',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and b.customer = ''Deli'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_color=>'#194CE6'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(4964971287476817)
+,p_chart_id=>wwv_flow_api.id(4964418046476816)
+,p_axis=>'x'
+,p_is_rendered=>'on'
+,p_title=>'X-Axis Title'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_tick_label_rotation=>'auto'
+,p_tick_label_position=>'outside'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(4965507109476818)
+,p_chart_id=>wwv_flow_api.id(4964418046476816)
+,p_axis=>'y'
+,p_is_rendered=>'on'
+,p_title=>'Y-Axis Title'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(3703254230478443589)
+,p_plug_name=>'Area Chart (Legend JavaScript Code Customization) Information'
+,p_parent_plug_id=>wwv_flow_api.id(235636486150916299)
+,p_region_template_options=>'#DEFAULT#:is-collapsed:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(1301834296162803227)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'N'
+,p_plug_display_point=>'BODY'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'This example demonstrates how to customize the icons associated with series entries of the legend on an Area chart data, via JavaScript code customizations.<p/>',
+'',
+'<strong>JavaScript Code</strong> - Use this chart-level attribute to customize your chart attributes and data.  To customize your chart, a callback function, options.dataFilter, must be defined.  Within that function, apply your customizations to the'
+||' data.  Any chart initialization changes, to attributes such as the chart title, type, or orientation, can also be made.  The JavaScript Code used on this example is as follows:<br/>',
+'',
+'<pre>',
+'function( options ) {',
+'    ',
+'    // Setup a callback function which gets called when data is retrieved, to manipulate the series data',
+'    options.dataFilter = function( data ) {',
+'',
+'        // Define a new legend, rather than using the default legend behavior applied to the chart',
+'        data.legend = {',
+'            sections:[{ items:[] }]',
+'        }',
+'        ',
+'        // Loop through the chart series, to define the new legend',
+'        for ( var i = 0; i < data.series.length; i++ ) {',
+'        ',
+'            // Manually add each series to the legend',
+'            // Note: We assume that images exist in Shared Components ''Static Application Files'', with a size of 16x16 pixel for every series entry.',
+'            //       The variable ''gAppImages'' is defined in the page attribute ''Function and Global Variable Declaration''',
+'            data.legend.sections[ 0 ].items.push( {',
+'                text: data.series[ i ].name,',
+'                color: data.series[ i ].color,',
+'                symbolType: "image",',
+'                source: gAppImages + "legend/" + data.series[ i ].name + ".png"',
+'            });',
+'            ',
+'            // Do not automatically include the series in the legend',
+'            data.series[ i ].displayInLegend = ''off'';',
+'        }  ',
+'        return data;',
+'    }',
+'    return options;',
+'}',
+'</pre><p/>',
+'',
+'<p>',
+'For more information on the JET chart legend options, refer to the Oracle JET <a href="http://docs.oracle.com/middleware/jet202/jet/reference-jet/oj.ojChart.html#legend.sections[].items[].symbolType" target="_blank">legend</a> attributes in the ojCha'
+||'rt API.',
+'</p>',
+'<p>',
+'For more information on the Area chart style settings, refer to the Oracle JET Cookbook <a href="http://www.oracle.com/webfolder/technetwork/jet/jetCookbook.html?component=areaChart&demo=styles" target="_blank">Area Chart: Styles</a> example.'))
+,p_plug_query_row_template=>1
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(427389268145544497)
+,p_plug_name=>'Area Chart (Line Types)'
+,p_region_name=>'area2'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>wwv_flow_api.id(1301837628275803235)
+,p_plug_display_sequence=>50
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_source_type=>'NATIVE_JET_CHART'
+,p_plug_query_row_template=>1
+,p_plug_query_num_rows=>15
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
+wwv_flow_api.create_jet_chart(
+ p_id=>wwv_flow_api.id(4969113318476823)
+,p_region_id=>wwv_flow_api.id(427389268145544497)
+,p_chart_type=>'area'
+,p_height=>'400'
+,p_animation_on_display=>'auto'
+,p_animation_on_data_change=>'auto'
+,p_orientation=>'vertical'
+,p_data_cursor=>'auto'
+,p_data_cursor_behavior=>'auto'
+,p_hide_and_show_behavior=>'withoutRescale'
+,p_hover_behavior=>'dim'
+,p_stack=>'on'
+,p_spark_chart=>'N'
+,p_zoom_and_scroll=>'off'
+,p_tooltip_rendered=>'Y'
+,p_show_series_name=>true
+,p_show_group_name=>true
+,p_show_value=>true
+,p_show_label=>true
+,p_legend_rendered=>'on'
+,p_legend_position=>'end'
+,p_overview_rendered=>'off'
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4971415234476823)
+,p_chart_id=>wwv_flow_api.id(4969113318476823)
+,p_seq=>10
+,p_name=>'Store A'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and customer = ''Store A'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_color=>'#61F277'
+,p_line_style=>'solid'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4972020883476823)
+,p_chart_id=>wwv_flow_api.id(4969113318476823)
+,p_seq=>20
+,p_name=>'Acme Store'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and customer = ''Acme Store'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_color=>'#F5D451'
+,p_line_style=>'solid'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4972677610476824)
+,p_chart_id=>wwv_flow_api.id(4969113318476823)
+,p_static_id=>'c_series'
+,p_seq=>30
+,p_name=>'Shop C'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and customer = ''Shop C'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_color=>'#ED1D1D'
+,p_line_style=>'solid'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4973272844476824)
+,p_chart_id=>wwv_flow_api.id(4969113318476823)
+,p_seq=>40
+,p_name=>'Deli'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and customer = ''Deli'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_color=>'#194CE6'
+,p_line_style=>'solid'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(4969643387476823)
+,p_chart_id=>wwv_flow_api.id(4969113318476823)
+,p_axis=>'x'
+,p_is_rendered=>'on'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_tick_label_rotation=>'auto'
+,p_tick_label_position=>'outside'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(4970249929476823)
+,p_chart_id=>wwv_flow_api.id(4969113318476823)
+,p_axis=>'y'
+,p_is_rendered=>'on'
+,p_title=>'Y1 Axis Title'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(4970886090476823)
+,p_chart_id=>wwv_flow_api.id(4969113318476823)
+,p_axis=>'y2'
+,p_is_rendered=>'on'
+,p_title=>'Y2 Axis Title'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_split_dual_y=>'on'
+,p_splitter_position=>.7
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(427391693193544521)
+,p_plug_name=>'Area Chart (Line Types) Information'
+,p_parent_plug_id=>wwv_flow_api.id(427389268145544497)
+,p_region_template_options=>'#DEFAULT#:is-collapsed:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(1301834296162803227)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'N'
+,p_plug_display_point=>'BODY'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'This example demonstrates various attributes of an Area chart.<p/>',
+'',
+'<strong>Hide and Show Behavior</strong> - Use this chart-level attribute to support hide and show behavior using the chart legend. The legend uses the <strong>Without Rescale</strong> Hide and Show behavior, allowing a user to hide and unhide a serie'
+||'s by clicking the chart legend markers. The chart axes will not rescale, which is useful to remain in context. <p/>',
+'<strong>Dynamic Actions</strong> - Through the use of Dynamic actions, use the buttons to the top right of the chart to change the line type of the chart series. Line type specifies the shape of the data point connectors on the chart.<p/>',
+'<p>',
+'For more information on the Area chart settings, refer to the Oracle JET Cookbook <a href="http://www.oracle.com/webfolder/technetwork/jet/jetCookbook.html?component=areaChart&demo=lineTypes" target="_blank">Area Chart: Line Types</a> example.'))
+,p_plug_query_row_template=>1
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(436644347271299779)
+,p_plug_name=>'Area Chart (Markers)'
+,p_region_template_options=>'#DEFAULT#:i-h480:t-Region--scrollBody'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>wwv_flow_api.id(1301837628275803235)
+,p_plug_display_sequence=>70
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select id,',
+'       project as label,',
+'       NVL((select sum(t.budget) from eba_demo_chart_tasks t where t.project =  p.id and t.budget > t.cost),0) as value,',
+'       ''under budget'' as series ,',
+'       ''green'' as color',
+'  from eba_demo_chart_projects p',
+'union all',
+'select id,',
+'       project as label,',
+'       NVL((select sum(t.budget) from eba_demo_chart_tasks t where t.project =  p.id and t.budget <= t.cost),0) as value,',
+'       ''over budget'' as series ,',
+'       ''red'' as color',
+'  from eba_demo_chart_projects p'))
+,p_plug_source_type=>'NATIVE_JET_CHART'
+,p_plug_query_row_template=>1
+,p_plug_query_num_rows=>15
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
+wwv_flow_api.create_jet_chart(
+ p_id=>wwv_flow_api.id(4976468148476827)
+,p_region_id=>wwv_flow_api.id(436644347271299779)
+,p_chart_type=>'area'
+,p_animation_on_display=>'none'
+,p_animation_on_data_change=>'none'
+,p_orientation=>'vertical'
+,p_data_cursor=>'auto'
+,p_data_cursor_behavior=>'auto'
+,p_hide_and_show_behavior=>'none'
+,p_hover_behavior=>'none'
+,p_stack=>'on'
+,p_spark_chart=>'N'
+,p_zoom_and_scroll=>'off'
+,p_tooltip_rendered=>'Y'
+,p_show_series_name=>true
+,p_show_group_name=>true
+,p_show_value=>true
+,p_show_label=>true
+,p_legend_rendered=>'on'
+,p_legend_position=>'auto'
+,p_overview_rendered=>'off'
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4978144801476828)
+,p_chart_id=>wwv_flow_api.id(4976468148476827)
+,p_seq=>10
+,p_name=>'Budget'
+,p_data_source_type=>'REGION_SOURCE'
+,p_series_name_column_name=>'SERIES'
+,p_items_value_column_name=>'VALUE'
+,p_group_short_desc_column_name=>'LABEL'
+,p_items_label_column_name=>'LABEL'
+,p_marker_rendered=>'on'
+,p_marker_shape=>'circle'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>true
+,p_items_label_position=>'none'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(4976964640476827)
+,p_chart_id=>wwv_flow_api.id(4976468148476827)
+,p_axis=>'x'
+,p_is_rendered=>'on'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_tick_label_rotation=>'none'
+,p_tick_label_position=>'outside'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(4977565870476827)
+,p_chart_id=>wwv_flow_api.id(4976468148476827)
+,p_axis=>'y'
+,p_is_rendered=>'on'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(436646418816299795)
+,p_plug_name=>'About this page'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_api.id(1301830915381803213)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'N'
+,p_plug_display_point=>'BODY'
+,p_plug_source=>'<p>Oracle Application Express (APEX) native Area charts, using Oracle JET Data Visualizations, are showcased on this page. Explore the wide range of chart attributes declaratively available with our native charts, to format and customise the style of'
+||' your charts.</p>'
+,p_plug_query_row_template=>1
+,p_plug_query_headings_type=>'QUERY_COLUMNS'
+,p_plug_query_num_rows=>15
+,p_plug_query_num_rows_type=>'NEXT_PREVIOUS_LINKS'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_plug_query_show_nulls_as=>' - '
+,p_pagination_display_position=>'BOTTOM_RIGHT'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+,p_attribute_03=>'N'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(436646943894299795)
+,p_plug_name=>'Region Display Selector'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_api.id(1301830915381803213)
+,p_plug_display_sequence=>20
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_source_type=>'NATIVE_DISPLAY_SELECTOR'
+,p_plug_query_row_template=>1
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'STANDARD'
+,p_attribute_02=>'Y'
+,p_attribute_03=>'Y'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(436648866819299797)
+,p_plug_name=>'Area Chart (Y-Axis Value Formatting)'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>wwv_flow_api.id(1301837628275803235)
+,p_plug_display_sequence=>60
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_source_type=>'NATIVE_JET_CHART'
+,p_plug_query_row_template=>1
+,p_plug_query_num_rows=>15
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
+wwv_flow_api.create_jet_chart(
+ p_id=>wwv_flow_api.id(4979608643476828)
+,p_region_id=>wwv_flow_api.id(436648866819299797)
+,p_chart_type=>'combo'
+,p_animation_on_display=>'auto'
+,p_animation_on_data_change=>'none'
+,p_orientation=>'horizontal'
+,p_data_cursor=>'auto'
+,p_data_cursor_behavior=>'auto'
+,p_hide_and_show_behavior=>'none'
+,p_hover_behavior=>'dim'
+,p_stack=>'off'
+,p_zoom_and_scroll=>'off'
+,p_tooltip_rendered=>'Y'
+,p_show_series_name=>false
+,p_show_group_name=>false
+,p_show_value=>true
+,p_show_label=>false
+,p_legend_rendered=>'on'
+,p_legend_position=>'auto'
+,p_overview_rendered=>'off'
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4981342872476829)
+,p_chart_id=>wwv_flow_api.id(4979608643476828)
+,p_seq=>10
+,p_name=>'Tasks By Budget/Cost'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select task_name,',
+'       budget',
+'  from eba_demo_chart_tasks',
+' where budget > 2000',
+'order by 2,1'))
+,p_series_type=>'area'
+,p_items_value_column_name=>'BUDGET'
+,p_items_label_column_name=>'TASK_NAME'
+,p_line_style=>'solid'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>true
+,p_items_label_position=>'auto'
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4981969863476829)
+,p_chart_id=>wwv_flow_api.id(4979608643476828)
+,p_seq=>20
+,p_name=>'Average Budget'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select task_name, round(avg_budget,2) from (  ',
+'    select task_name,',
+'       avg(budget) over () avg_budget',
+'  from eba_demo_chart_tasks',
+' where budget > 2000',
+'order by 2,1)'))
+,p_series_type=>'line'
+,p_items_value_column_name=>'ROUND(AVG_BUDGET,2)'
+,p_items_label_column_name=>'TASK_NAME'
+,p_color=>'#4FB000'
+,p_line_style=>'solid'
+,p_line_width=>4
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(4980156023476828)
+,p_chart_id=>wwv_flow_api.id(4979608643476828)
+,p_axis=>'x'
+,p_is_rendered=>'on'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_tick_label_rotation=>'auto'
+,p_tick_label_position=>'outside'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(4980789266476829)
+,p_chart_id=>wwv_flow_api.id(4979608643476828)
+,p_axis=>'y'
+,p_is_rendered=>'on'
+,p_title=>'Y Axis Title'
+,p_format_type=>'decimal'
+,p_format_scaling=>'thousand'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'min'
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'on'
+,p_tick_label_rendered=>'on'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(436651022132299801)
+,p_plug_name=>'Area Chart (Stacked)'
+,p_region_name=>'area1'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>wwv_flow_api.id(1301837628275803235)
+,p_plug_display_sequence=>30
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_source_type=>'NATIVE_JET_CHART'
+,p_plug_query_row_template=>1
+,p_plug_query_num_rows=>15
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
+wwv_flow_api.create_jet_chart(
+ p_id=>wwv_flow_api.id(4982850137476829)
+,p_region_id=>wwv_flow_api.id(436651022132299801)
+,p_chart_type=>'area'
+,p_width=>'500'
+,p_height=>'400'
+,p_animation_on_display=>'auto'
+,p_animation_on_data_change=>'auto'
+,p_orientation=>'vertical'
+,p_data_cursor=>'on'
+,p_data_cursor_behavior=>'smooth'
+,p_hide_and_show_behavior=>'withRescale'
+,p_hover_behavior=>'none'
+,p_stack=>'off'
+,p_spark_chart=>'N'
+,p_zoom_and_scroll=>'off'
+,p_tooltip_rendered=>'Y'
+,p_show_series_name=>true
+,p_show_group_name=>true
+,p_show_value=>true
+,p_show_label=>true
+,p_legend_rendered=>'on'
+,p_legend_position=>'top'
+,p_overview_rendered=>'off'
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4984522474476830)
+,p_chart_id=>wwv_flow_api.id(4982850137476829)
+,p_seq=>10
+,p_name=>'Deli'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer, a.product_description',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and b.customer = ''Deli'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_color=>'#194CE6'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4985186508476830)
+,p_chart_id=>wwv_flow_api.id(4982850137476829)
+,p_seq=>20
+,p_name=>'Store A'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer, a.product_description',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and b.customer = ''Store A'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_color=>'#61F277'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4985794562476830)
+,p_chart_id=>wwv_flow_api.id(4982850137476829)
+,p_seq=>30
+,p_name=>'Acme Store'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer,a.product_name || '' '' || a.product_description || ''<br/>X: '' ||',
+'                    a.list_price || ''<br/>Y: '' || a.product_id "shortDesc", a.product_description',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and b.customer = ''Acme Store'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_items_short_desc_column_name=>'shortDesc'
+,p_color=>'#F5D451'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4986370594476830)
+,p_chart_id=>wwv_flow_api.id(4982850137476829)
+,p_static_id=>'c_series'
+,p_seq=>40
+,p_name=>'Shop C'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer, a.product_description',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and b.customer = ''Shop C'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_color=>'#ED1D1D'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(4983350157476830)
+,p_chart_id=>wwv_flow_api.id(4982850137476829)
+,p_axis=>'x'
+,p_is_rendered=>'on'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_tick_label_rotation=>'auto'
+,p_tick_label_position=>'outside'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(4983929120476830)
+,p_chart_id=>wwv_flow_api.id(4982850137476829)
+,p_axis=>'y'
+,p_is_rendered=>'on'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(436816674078295928)
+,p_plug_name=>' Area Chart (Stacked) Information'
+,p_parent_plug_id=>wwv_flow_api.id(436651022132299801)
+,p_region_template_options=>'#DEFAULT#:is-collapsed:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(1301834296162803227)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'N'
+,p_plug_display_point=>'BODY'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'This example demonstrates various attributes of an Area chart.<p/>',
+'',
+'<strong>Hide and Show Behavior</strong> - Use this chart-level attribute to support hide and show behavior using the chart legend. The legend uses the <strong>With Rescale</strong> Hide and Show behavior, allowing a user to hide and unhide a series b'
+||'y clicking the chart legend markers. This allows the user to focus on specific series that are interesting to them. The chart axes will rescale as the minimum and maximum values of the visible data increase or decrease. This can be useful for series '
+||'with largely varying values.<p/>',
+'<strong>Dynamic Actions</strong> - Through the use of Dynamic actions, use the Horizontal/Vertical buttons to the top left of the chart to change the orientiation of the data items on the charts, and the Stack/Unstack buttons to the top right of the '
+||'chart to change the rendering style of the data items. When multiple series are shown, stacking is recommended to prevent values from being obscured.<p/>',
+'<p>',
+'For more information on the Area chart settings, refer to the Oracle JET Cookbook <a href="http://www.oracle.com/webfolder/technetwork/jet/jetCookbook.html?component=areaChart&demo=default" target="_blank">Area Chart: Basic</a> and <a href="http://ww'
+||'w.oracle.com/webfolder/technetwork/jet/jetCookbook.html?component=areaChart&demo=hideShow">Area Chart: Hide & Show</a> examples.',
+'',
+''))
+,p_plug_query_row_template=>1
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(678173401892136198)
+,p_plug_name=>'Area Chart (Color JavaScript Code Customization)'
+,p_region_name=>'area_js'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>wwv_flow_api.id(1301837628275803235)
+,p_plug_display_sequence=>80
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BODY'
+,p_plug_source_type=>'NATIVE_JET_CHART'
+,p_plug_query_row_template=>1
+,p_plug_query_num_rows=>15
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
+end;
+/
+begin
+wwv_flow_api.create_jet_chart(
+ p_id=>wwv_flow_api.id(4989121654476832)
+,p_region_id=>wwv_flow_api.id(678173401892136198)
+,p_chart_type=>'area'
+,p_width=>'500'
+,p_height=>'400'
+,p_animation_on_display=>'auto'
+,p_animation_on_data_change=>'auto'
+,p_orientation=>'vertical'
+,p_data_cursor=>'on'
+,p_data_cursor_behavior=>'smooth'
+,p_hide_and_show_behavior=>'withRescale'
+,p_hover_behavior=>'none'
+,p_stack=>'on'
+,p_spark_chart=>'N'
+,p_zoom_and_scroll=>'off'
+,p_tooltip_rendered=>'Y'
+,p_show_series_name=>true
+,p_show_group_name=>true
+,p_show_value=>true
+,p_show_label=>true
+,p_legend_rendered=>'on'
+,p_legend_position=>'top'
+,p_overview_rendered=>'off'
+,p_javascript_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'function( options ) {',
+'',
+'    // Setup a callback function which gets called when data is retrieved, to manipulate the series data',
+'    options.dataFilter = function( data ) {',
+'        ',
+'        data.series[ 0 ].color = "#ED6647";',
+'        data.series[ 0 ].borderColor = "#0F3248";',
+'        data.series[ 0 ].markerDisplayed = "on";',
+'        data.series[ 0 ].markerShape = "plus";',
+'        data.series[ 0 ].markerColor = "red";',
+'        data.series[ 0 ].markerSize = 8;',
+'        data.series[ 0 ].pattern = "smallChecker";',
+'        return data;',
+'    };',
+'',
+'    return options;',
+'}'))
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4990829014476832)
+,p_chart_id=>wwv_flow_api.id(4989121654476832)
+,p_seq=>10
+,p_name=>'Store A'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer, a.product_description',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and b.customer = ''Store A'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_color=>'#61F277'
+,p_line_style=>'solid'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4991409439476832)
+,p_chart_id=>wwv_flow_api.id(4989121654476832)
+,p_seq=>20
+,p_name=>'Acme Store'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer,a.product_name || '' '' || a.product_description || ''<br/>X: '' ||',
+'                    a.list_price || ''<br/>Y: '' || a.product_id "shortDesc", a.product_description',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and b.customer = ''Acme Store'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_items_short_desc_column_name=>'shortDesc'
+,p_color=>'#F5D451'
+,p_line_style=>'solid'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4992036910476832)
+,p_chart_id=>wwv_flow_api.id(4989121654476832)
+,p_static_id=>'c_series'
+,p_seq=>30
+,p_name=>'Shop C'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer, a.product_description',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and b.customer = ''Shop C'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_color=>'#ED1D1D'
+,p_line_style=>'solid'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_series(
+ p_id=>wwv_flow_api.id(4992653522476833)
+,p_chart_id=>wwv_flow_api.id(4989121654476832)
+,p_seq=>40
+,p_name=>'Deli'
+,p_data_source_type=>'SQL_QUERY'
+,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select a.product_name, b.quantity, b.customer, a.product_description',
+'from eba_demo_chart_products a, eba_demo_chart_orders b',
+'where a.product_id = b.product_id',
+'and b.customer = ''Deli'''))
+,p_items_value_column_name=>'QUANTITY'
+,p_items_label_column_name=>'PRODUCT_NAME'
+,p_color=>'#194CE6'
+,p_line_style=>'solid'
+,p_line_type=>'auto'
+,p_marker_rendered=>'auto'
+,p_marker_shape=>'auto'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(4989671786476832)
+,p_chart_id=>wwv_flow_api.id(4989121654476832)
+,p_axis=>'x'
+,p_is_rendered=>'on'
+,p_title=>'X-Axis Title'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_tick_label_rotation=>'auto'
+,p_tick_label_position=>'outside'
+);
+wwv_flow_api.create_jet_chart_axis(
+ p_id=>wwv_flow_api.id(4990288384476832)
+,p_chart_id=>wwv_flow_api.id(4989121654476832)
+,p_axis=>'y'
+,p_is_rendered=>'on'
+,p_title=>'Y-Axis Title'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(678174648300136210)
+,p_plug_name=>'Area Chart (Color JavaScript Code Customization) Information'
+,p_parent_plug_id=>wwv_flow_api.id(678173401892136198)
+,p_region_template_options=>'#DEFAULT#:is-collapsed:t-Region--scrollBody'
+,p_plug_template=>wwv_flow_api.id(1301834296162803227)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'N'
+,p_plug_display_point=>'BODY'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'This example demonstrates how to customize the series style of an Area chart data, via JavaScript code customizations.<p/>',
+'',
+'<strong>JavaScript Code</strong> - Use this chart-level attribute to customize your chart attributes and data.  To customize your chart, a callback function, options.dataFilter, must be defined.  Within that function, apply your customizations to the'
+||' data.  Any chart initialization changes, to attributes such as the chart title, type, or orientation, can also be made.  The JavaScript Code should follow a template similar to the following:<br/>',
+'',
+'<pre>',
+'function( options ) { ',
+'    ',
+'    // Setup a callback function which gets called when data is retrieved, to manipulate the series ',
+'    options.dataFilter = function( data ) { ',
+'        ',
+'        // Define data attribute to add/change.',
+'        // For example, change the color of series ''Store A'' to green.',
+'        data.series[ 0 ].color = "#00FF00";',
+'        return data; ',
+'    }; ',
+'    ',
+'    // Set chart initialization options',
+'    // For example, change the chart type to line, where it may currently be a bar chart',
+'    options.type = "line";',
+'    return options;',
+'}',
+'</pre><p/>',
+'',
+'<p>',
+'For more information on the JET chart options, refer to the Oracle JET <a href="http://docs.oracle.com/middleware/jet202/jet/reference-jet/oj.ojChart.html" target="_blank">ojChart API</a>.',
+'</p>',
+'<p>',
+'For more information on the Area chart style settings, refer to the Oracle JET Cookbook <a href="http://www.oracle.com/webfolder/technetwork/jet/jetCookbook.html?component=areaChart&demo=styles" target="_blank">Area Chart: Styles</a> example.'))
+,p_plug_query_row_template=>1
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(4973887629476824)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_api.id(427389268145544497)
+,p_button_name=>'Straight'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#:t-Button--pillStart'
+,p_button_template_id=>wwv_flow_api.id(1301851286769803290)
+,p_button_image_alt=>'Straight'
+,p_button_position=>'REGION_TEMPLATE_NEXT'
+,p_warn_on_unsaved_changes=>null
+,p_grid_new_grid=>false
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(4986948671476831)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_api.id(436651022132299801)
+,p_button_name=>'Stack'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#:t-Button--pillStart'
+,p_button_template_id=>wwv_flow_api.id(1301851286769803290)
+,p_button_image_alt=>'Stack'
+,p_button_position=>'REGION_TEMPLATE_NEXT'
+,p_grid_new_grid=>false
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(4974266039476825)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_api.id(427389268145544497)
+,p_button_name=>'Curved'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#:t-Button--pill'
+,p_button_template_id=>wwv_flow_api.id(1301851286769803290)
+,p_button_image_alt=>'Curved'
+,p_button_position=>'REGION_TEMPLATE_NEXT'
+,p_warn_on_unsaved_changes=>null
+,p_grid_new_grid=>false
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(4987352316476831)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_api.id(436651022132299801)
+,p_button_name=>'Unstack'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#:t-Button--pillEnd'
+,p_button_template_id=>wwv_flow_api.id(1301851286769803290)
+,p_button_image_alt=>'Unstack'
+,p_button_position=>'REGION_TEMPLATE_NEXT'
+,p_grid_new_grid=>false
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(4974673587476825)
+,p_button_sequence=>30
+,p_button_plug_id=>wwv_flow_api.id(427389268145544497)
+,p_button_name=>'Stepped'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#:t-Button--pill'
+,p_button_template_id=>wwv_flow_api.id(1301851286769803290)
+,p_button_image_alt=>'Stepped'
+,p_button_position=>'REGION_TEMPLATE_NEXT'
+,p_warn_on_unsaved_changes=>null
+,p_grid_new_grid=>false
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(4975026711476825)
+,p_button_sequence=>40
+,p_button_plug_id=>wwv_flow_api.id(427389268145544497)
+,p_button_name=>'Segmented'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#:t-Button--pill'
+,p_button_template_id=>wwv_flow_api.id(1301851286769803290)
+,p_button_image_alt=>'Centered Segmented'
+,p_button_position=>'REGION_TEMPLATE_NEXT'
+,p_warn_on_unsaved_changes=>null
+,p_grid_new_grid=>false
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(4975400248476825)
+,p_button_sequence=>50
+,p_button_plug_id=>wwv_flow_api.id(427389268145544497)
+,p_button_name=>'None'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#:t-Button--pillEnd'
+,p_button_template_id=>wwv_flow_api.id(1301851286769803290)
+,p_button_image_alt=>'None'
+,p_button_position=>'REGION_TEMPLATE_NEXT'
+,p_warn_on_unsaved_changes=>null
+,p_grid_new_grid=>false
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(4987725733476831)
+,p_button_sequence=>30
+,p_button_plug_id=>wwv_flow_api.id(436651022132299801)
+,p_button_name=>'Horizontal'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(1301850749580803284)
+,p_button_image_alt=>'Horizontal'
+,p_button_position=>'REGION_TEMPLATE_PREVIOUS'
+,p_icon_css_classes=>'fa-bars'
+,p_grid_new_grid=>false
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(4988165326476831)
+,p_button_sequence=>40
+,p_button_plug_id=>wwv_flow_api.id(436651022132299801)
+,p_button_name=>'Vertical'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#:t-Button--pillEnd'
+,p_button_template_id=>wwv_flow_api.id(1301850749580803284)
+,p_button_image_alt=>'Vertical'
+,p_button_position=>'REGION_TEMPLATE_PREVIOUS'
+,p_icon_css_classes=>'fa-area-chart'
+,p_grid_new_grid=>false
+);
+wwv_flow_api.create_page_computation(
+ p_id=>wwv_flow_api.id(4994216537476842)
+,p_computation_sequence=>10
+,p_computation_item=>'LAST_VIEW'
+,p_computation_point=>'BEFORE_HEADER'
+,p_computation_type=>'STATIC_ASSIGNMENT'
+,p_computation=>'&APP_PAGE_ID.'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(4994577815476842)
+,p_name=>'Stack Chart'
+,p_event_sequence=>10
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(4986948671476831)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(4995050556476843)
+,p_event_id=>wwv_flow_api.id(4994577815476842)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_api.id(436651022132299801)
+,p_attribute_01=>'$("#area1_jet").ojChart({stack: ''on''});'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(4995490047476843)
+,p_name=>'Unstack Chart'
+,p_event_sequence=>20
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(4987352316476831)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(4995952065476843)
+,p_event_id=>wwv_flow_api.id(4995490047476843)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_api.id(436651022132299801)
+,p_attribute_01=>'$("#area1_jet").ojChart({stack: ''off''});'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(4996330741476843)
+,p_name=>'Horizontal Orientation'
+,p_event_sequence=>30
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(4987725733476831)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(4996800722476844)
+,p_event_id=>wwv_flow_api.id(4996330741476843)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_api.id(436651022132299801)
+,p_attribute_01=>'$("#area1_jet").ojChart({orientation: ''horizontal''});'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(4997262942476844)
+,p_name=>'Vertical Orientation'
+,p_event_sequence=>40
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(4988165326476831)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(4997714424476844)
+,p_event_id=>wwv_flow_api.id(4997262942476844)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_api.id(436651022132299801)
+,p_attribute_01=>'$("#area1_jet").ojChart({orientation: ''vertical''});'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(4998106525476844)
+,p_name=>'Straight'
+,p_event_sequence=>50
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(422426037579067701)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(4998618774476844)
+,p_event_id=>wwv_flow_api.id(4998106525476844)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_api.id(427389268145544497)
+,p_attribute_01=>'$("#area2_jet").ojChart({styleDefaults:{lineType:''straight''}});'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(4999027756476844)
+,p_name=>'Curved'
+,p_event_sequence=>60
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(422426159774067702)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(4999522802476844)
+,p_event_id=>wwv_flow_api.id(4999027756476844)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_api.id(427389268145544497)
+,p_attribute_01=>'$("#area2_jet").ojChart({styleDefaults:{lineType:''curved''}});'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(4999995768476844)
+,p_name=>'Stepped'
+,p_event_sequence=>70
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(422426237398067703)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(5000447169476845)
+,p_event_id=>wwv_flow_api.id(4999995768476844)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_api.id(427389268145544497)
+,p_attribute_01=>'$("#area2_jet").ojChart({styleDefaults:{lineType:''stepped''}});'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(5000800877476845)
+,p_name=>'Segmented'
+,p_event_sequence=>80
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(422428086433067721)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(5001357044476845)
+,p_event_id=>wwv_flow_api.id(5000800877476845)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_api.id(427389268145544497)
+,p_attribute_01=>'$("#area2_jet").ojChart({styleDefaults:{lineType:''centeredSegmented''}});'
+,p_stop_execution_on_error=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(5001743981476845)
+,p_name=>'None'
+,p_event_sequence=>90
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(4975400248476825)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(5002231994476845)
+,p_event_id=>wwv_flow_api.id(5001743981476845)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_api.id(427389268145544497)
+,p_attribute_01=>'$("#area2_jet").ojChart({styleDefaults:{lineType:''none''}});'
+,p_stop_execution_on_error=>'Y'
 );
 end;
 /
